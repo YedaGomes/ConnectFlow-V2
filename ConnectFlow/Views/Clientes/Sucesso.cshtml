@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Conectividade de Dados";
+}
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #0f172a !important;
+    }
+
+    /* O wrapper que mantém etapas e card unidos */
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh;
+        justify-content: center;
+    }
+
+    .step-text {
+        color: #94a3b8 !important;
+    }
+
+        .step-text.active {
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+</style>
+
+<div class="page-wrapper">
+    <div class="container text-center">
+
+        <div class="d-flex justify-content-center mb-4 small">
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Dados da Empresa</div>
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Configuração</div>
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Usuário</div>
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Acessibilidade</div>
+                <div class="px-3 step-text active"><span class="badge bg-primary rounded-circle">5</span> Revisão</div>
+            </div>
+        <div style="background-color: #ffffff !important; border-radius: 16px; padding: 40px; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin: 0 auto;">
+
+            <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                <div style="background-color: #10b981 !important; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
+                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.42-6.446z" />
+                    </svg>
+                </div>
+            </div>
+
+            <h2 style="color: #000000 !important; font-weight: 700; margin-bottom: 15px;">Cadastro Realizado!</h2>
+
+            <p style="color: #475569 !important; font-size: 15px; line-height: 1.6; margin-bottom: 30px;">
+                Sua empresa foi cadastrada com sucesso na <strong style="color: #1e293b;">ConnectFlow</strong>.<br>
+                Em breve você receberá um e-mail de confirmação.
+            </p>
+
+            <a href="/" style="background: linear-gradient(135deg, #38bdf8, #2563eb); color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block;">Voltar para o Início</a>
+        </div>
+
+    </div>
+</div>

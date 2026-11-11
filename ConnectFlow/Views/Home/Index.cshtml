@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "ConnectFlow Solutions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Integração Inteligente para o seu Negócio</h1>
+                <p>
+                Otimizamos a performance operacional através de integrações de alto nível. Implementamos soluções customizadas de integração entre bases de dados, ERPs (como SAP)
+                e microsserviços via APIs, focando em baixa latência e integridade total dos dados. Conectamos sua tecnologia para que você foque no crescimento.
+                </p>
+                <a asp-controller="Clientes" asp-action="Create" class="btn">Cadastre-se</a>
+            </div>
+        </section>
+
+        <section class="servicos" id="servicos">
+            <h2>Nossas Soluções</h2>
+
+            <div class="cards">
+                
+                <div class="card" style="cursor: pointer;">
+                    <a href="@Url.Action("MySQL", "Home")" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                        <div class="card-img-container">
+                            <img src="~/images/IntegraçãoMySQLInicial.jpg" class="card-img" alt="Solução">
+                        </div>
+                        <h3>Integração com Banco de Dados</h3>
+                        <p>Estruturamos e conectamos bancos de dados para garantir performance, segurança e escalabilidade.</p>
+                        <span style="color: #38bdf8; font-weight: 600; margin-top: auto; padding-top: 20px; text-align: left;">Saiba mais</span>
+                    </a>
+                </div>
+
+                <div class="card" style="cursor: pointer;">
+                    <a href="@Url.Action("Sap", "Home")" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                        <div class="card-img-container">
+                            <img src="~/images/AutomaçãoSAPInicial.jpg" class="card-img" alt="Solução">
+                        </div>
+                        <h3>Automação SAP (SAP Jobs)</h3>
+                        <p>Automatizamos rotinas e processos dentro do SAP, reduzindo erros e aumentando produtividade.</p>
+                        <span style="color: #38bdf8; font-weight: 600; margin-top: auto; padding-top: 20px; text-align: left;">Saiba mais</span>
+                    </a>
+                </div>
+
+                <div class="card" style="cursor: pointer;">
+                    <a href="@Url.Action("Apis", "Home")" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                        <div class="card-img-container">
+                            <img src="~/images/IntegraçãoAPIsInicial.jpg" class="card-img" alt="Solução Automação SAP">
+                        </div>
+                        <h3>Integração de APIs</h3>
+                        <p>Conectamos sistemas diferentes através de APIs REST, garantindo comunicação eficiente entre plataformas.</p>
+                        <span style="color: #38bdf8; font-weight: 600; margin-top: auto; padding-top: 20px; text-align: left;">Saiba mais</span>
+                    </a>
+                </div>
+
+                <div class="card" style="cursor: pointer;">
+                    <a href="@Url.Action("Consultoria", "Home")" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%;">
+                        <div class="card-img-container">
+                            <img src="~/images/ConsultoriaInicial.jpg" class="card-img" alt="Solução">
+                        </div>
+                        <h3>Consultoria Tecnológica</h3>
+                        <p>Analisamos sua infraestrutura e propomos soluções inteligentes para integração e otimização.</p>
+                        <span style="color: #38bdf8; font-weight: 600; margin-top: auto; padding-top: 20px; text-align: left;">Saiba mais</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="sobre-nos" class="sobre-secao">
+    
+            <div class="sobre-container">
+                <h2 class="sobre-titulo-principal">Excelência em Integração</h2>
+                <div class="sobre-texto-institucional">
+                    <p style="margin-bottom: 15px;">
+                        <strong class="text-white">ConnectFlow Solutions</strong> nasceu com o propósito de eliminar as barreiras tecnológicas que limitam o crescimento empresarial. Somos especialistas em engenharia de integração de sistemas, conectando plataformas legadas, soluções em nuvem e ecossistemas complexos para criar fluxos de trabalho totalmente automatizados e inteligentes.
+                    </p>
+                    <p>
+                        Seja unificando canais através de <strong class="text-info">APIs robustas e seguras</strong>, maximizando o poder do seu <strong class="text-info">ERP SAP</strong>, ou desenhando arquiteturas modernas por meio de nossa <strong class="text-info">Consultoria Estratégica</strong>, nossa missão é garantir que seus dados circulem com máxima velocidade, integridade e proteção.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sobre-faixa-imagem">
+                <div class="sobre-container">
+                    <div class="sobre-grid-cards">
+    
+                        <div class="sobre-card">
+                            <div class="sobre-card-borda-icone">🔌</div>
+                            <h4 class="sobre-card-titulo" style="margin-top: 15px;">Integração de APIs</h4>
+                            <p class="sobre-card-descricao">Desenvolvimento de conexões RESTful e microsserviços escaláveis para comunicação fluida e segura entre sistemas.</p>
+                        </div>
+
+                        <div class="sobre-card">
+                            <div class="sobre-card-borda-icone">📊</div>
+                            <h4 class="sobre-card-titulo" style="margin-top: 15px;">Ecossistemas SAP</h4>
+                            <p class="sobre-card-descricao">Automação de processos operacionais e financeiros injetando inteligência de dados direta no seu ERP corporativo.</p>
+                        </div>
+
+                        <div class="sobre-card">
+                            <div class="sobre-card-borda-icone">🧠</div>
+                            <h4 class="sobre-card-titulo" style="margin-top: 15px;">Consultoria Avançada</h4>
+                            <p class="sobre-card-descricao">Mapeamento de riscos corporativos, análise de infraestrutura e planejamento prontos para suportar alta escala.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contato-home" class="contato-home-secao">
+            <div class="container">
+                <div class="contato-home-wrapper">
+            
+                    <h2>Contato</h2>
+                    <p>Ficou com alguma dúvida? Envie uma mensagem para nós.</p>
+
+                    <div class="contato-home-form">
+                        <form id="formContatoHome" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="nomeHome">Nome</label>
+                                <input type="text" id="nomeHome" class="form-control" placeholder="Seu nome" required />
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="emailHome">E-mail</label>
+                                <input type="email" id="emailHome" class="form-control" placeholder="seuemail@empresa.com" required />
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="mensagemHome">Mensagem</label>
+                                <textarea id="mensagemHome" class="form-control" rows="4" placeholder="Digite sua mensagem aqui..." required></textarea>
+                            </div>
+                    
+                            <button type="submit" class="btn-contato-fluxo">Enviar Mensagem</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+     
+            function toggleSobre() {
+                const box = document.getElementById("sobreConteudo");
+                box.classList.toggle("ativo");
+            }
+            document.getElementById('formContatoHome').addEventListener('submit', function (event) {
+          
+                event.preventDefault();
+                const nome = document.getElementById('nomeHome').value;
+                alert(`Obrigado, ${nome}! Sua mensagem foi enviada com sucesso.`);
+                this.reset();
+            });
+    </script>
+

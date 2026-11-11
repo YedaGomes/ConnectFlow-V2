@@ -1,0 +1,116 @@
+﻿@model ConnectFlow.Models.Configuracao
+
+@{
+    ViewData["Title"] = "Conectividade de Dados";
+}
+
+<style>
+    /* 1. O CSS que faz tudo ficar centralizado junto (Veio da Acessibilidade) */
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh;
+        justify-content: center;
+    }
+
+    /* 2. Mantendo o seu layout do card sem usar a tela-inteira */
+    .custom-card {
+        background-color: #ffffff !important;
+        border-radius: 15px;
+        padding: 35px;
+        width: 100%;
+        max-width: 800px; /* Mantive largo como no seu código original */
+        margin: auto;
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    }
+
+    /* 3. Seu CSS das etapas e do formulário de Configuração */
+    .step-text {
+        color: #94a3b8 !important;
+    }
+
+        .step-text.active {
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+
+    .objective-card {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        background-color: #ffffff;
+        display: block; /* Garante que os botões ocupem a linha toda */
+    }
+
+    .objective-input {
+        display: none;
+    }
+
+        .objective-input:checked + .objective-card {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+        }
+</style>
+
+<div class="page-wrapper">
+    <div class="container text-center">
+
+        <div class="d-flex justify-content-center mb-4 small">
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Dados da Empresa</div>
+                <div class="px-3 step-text active"><span class="badge bg-primary rounded-circle">2</span> Configuração</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">3</span> Usuário</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">4</span> Acessibilidade</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">5</span> Revisão</div>
+            </div>
+
+        <div class="custom-card text-start text-dark">
+
+            <h3 class="fw-bold mb-1">Configuração de Conectividade</h3>
+            <p class="text-muted small mb-4">Selecione o objetivo técnico e o sistema para otimizarmos sua integração.</p>
+
+     <form asp-action="CadastroUsuario" asp-controller="Home">
+                <input type="hidden" asp-for="IdCliente" />
+
+                <h6 class="fw-bold mb-3">1. Qual é a sua prioridade principal para esta conexão?</h6>
+
+                <input type="radio" name="PrioridadeTecnica" id="perf" value="Performance" class="objective-input">
+                <label for="perf" class="objective-card">
+                    <strong>Performance Máxima</strong><br>
+                    <small class="text-muted">Priorizar velocidade de leitura e consultas complexas.</small>
+                </label>
+
+                <input type="radio" name="PrioridadeTecnica" id="seg" value="Seguranca" class="objective-input">
+                <label for="seg" class="objective-card">
+                    <strong>Segurança e Continuidade</strong><br>
+                    <small class="text-muted">Priorizar espelhamento e backups automáticos.</small>
+                </label>
+
+                <input type="radio" name="PrioridadeTecnica" id="esc" value="Escalabilidade" class="objective-input">
+                <label for="esc" class="objective-card">
+                    <strong>Escalabilidade (High Traffic)</strong><br>
+                    <small class="text-muted">Priorizar distribuição de carga e alta disponibilidade.</small>
+                </label>
+
+                <div class="form-group mb-4 mt-3">
+                    <label class="fw-bold small mb-1">2. Informe o tipo de banco de dados de origem *</label>
+                    <select class="form-select text-muted">
+                        <option value="">Selecione o sistema...</option>
+                        <option value="MySQL">MySQL</option>
+                        <option value="PostgreSQL">PostgreSQL</option>
+                        <option value="SQLServer">SQL Server</option>
+                        <option value="Oracle">Oracle Database</option>
+                    </select>
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a asp-action="Create" class="btn btn-outline-secondary w-100 py-2">Voltar</a>
+                    <button type="submit" class="btn btn-primary w-100 py-2" style="background-color: #2563eb;">Próximo</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

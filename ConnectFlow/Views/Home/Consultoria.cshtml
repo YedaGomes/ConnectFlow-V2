@@ -1,0 +1,356 @@
+﻿@{
+    Layout = null;
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultoria Estratégica";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultoria Estratégica - ConnectFlow</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <style>
+                body {
+                    background-color: #0b111e;
+                    color: #ffffff;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0;
+                }
+                               
+                .meu-header-personalizado {
+                    width: 100%;
+                    padding: 20px 50px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid #1e293b;
+                    background-color: #0b111e;
+                }
+
+                .logo-marca {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #ffffff;
+                    text-decoration: none;
+                }
+
+                .meu-menu a {
+                    color: #94a3b8;
+                    text-decoration: none;
+                    margin-left: 25px;
+                    font-size: 0.95rem;
+                    transition: color 0.3s;
+                }
+
+                .meu-menu a:hover {
+                    color: #ffffff;
+                }
+                  
+                .hero-solucao {
+                    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+                    border-bottom: 1px solid #1e293b;
+                    padding: 80px 0;
+                }
+
+                .hero-titulo {
+                    font-size: 2.8rem;
+                    font-weight: 800;
+                    line-height: 1.2;
+                    margin-bottom: 20px;
+                    color: #ffffff;
+                }
+
+                .hero-subtitulo {
+                    font-size: 1.25rem;
+                    color: #93c5fd;
+                    line-height: 1.6;
+                    margin-bottom: 30px;
+                }
+
+                .img-fluid-hero {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 12px;
+                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+                }
+                         
+                .recursos-section {
+                    padding: 80px 0;
+                }
+
+                .recurso-bloco {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 100px;
+                }
+
+                .recurso-bloco:last-child {
+                    margin-bottom: 0;
+                }
+
+                .recurso-texto {
+                    padding: 20px;
+                }
+
+                .recurso-badge {
+                    background-color: #1e293b;
+                    color: #38bdf8;
+                    padding: 6px 16px;
+                    border-radius: 20px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    display: inline-block;
+                    margin-bottom: 15px;
+                    border: 1px solid #334155;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                .recurso-titulo {
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    color: #ffffff;
+                    margin-bottom: 15px;
+                }
+
+                .recurso-descricao {
+                    color: #94a3b8;
+                    font-size: 1.1rem;
+                    line-height: 1.7;
+                }
+
+                .img-recurso {
+                    width: 100%;
+                    max-width: 450px;
+                    border-radius: 16px;
+                    border: 1px solid #1e293b;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+                }
+
+             
+                .cta-section {
+                    background-color: #0f172a;
+                    padding: 60px 0;
+                    text-align: center;
+                    border-top: 1px solid #1e293b;
+                }
+                               
+                .btn-solicitar {
+                    background: linear-gradient(135deg, #38bdf8, #2563eb);
+                    color: white !important;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 14px 35px;
+                    text-decoration: none;
+                    display: inline-block;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.4);
+                    cursor: pointer;
+                }
+
+                .btn-solicitar:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.6);
+                }
+
+            
+                .modal-customizado .modal-content {
+                    background-color: #121824;
+                    border: 1px solid #1e293b;
+                    border-radius: 16px;
+                }
+
+                .modal-customizado .modal-header {
+                    border-bottom: 1px solid #1e293b;
+                    padding: 25px;
+                }
+
+                .modal-customizado .form-control {
+                    background-color: #ffffff !important; 
+                    border: 1px solid #ccc;
+                    color: #000000 !important; 
+                    border-radius: 8px;
+                    padding: 12px;
+                }
+
+                .modal-customizado .form-control:focus {
+                    background-color: #070a12;
+                    border-color: #38bdf8;
+                    color: #ffffff;
+                    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+                }
+
+                .modal-customizado .form-label {
+                    color: #cbd5e1;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                }
+                         
+                .meu-rodape {
+                    margin-top: auto;
+                    width: 100%;
+                    text-align: center;
+                    padding: 30px 0;
+                    color: #64748b;
+                    font-size: 0.85rem;
+                    border-top: 1px solid #1e293b;
+                    background-color: #0b111e;
+                }
+    </style>
+</head>
+<body>
+
+    <section class="hero-solucao">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-titulo">Consultoria Estratégica de TI</h1>
+                    <p class="hero-subtitulo">
+                        Apoiamos sua empresa na escolha das melhores tecnologias, arquitetura de dados e otimização de processos para garantir máxima eficiência, total segurança e alinhamento com seus objetivos de negócio.
+                    </p>
+                    <button class="btn-solicitar" data-bs-toggle="modal" data-bs-target="#modalAtendimento">Fale com um Especialista</button>
+                </div>
+                <div class="col-lg-6 text-center mt-4 mt-lg-0">
+                    <img src="~/images/ConsultoriaPainel.jpg" alt="Painel Consultoria ConnectFlow" class="img-fluid-hero" onerror="this.src='https://placehold.co/600x400/1e3a8a/ffffff?text=Painel+Consultoria'" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="recurso-divisor" />
+
+    <section class="recursos-section">
+        <div class="container">
+        
+            <div class="row recurso-bloco align-items-center mb-5">
+                <div class="col-md-6 text-center order-2 order-md-1">
+                    <div class="tech-image-container">
+                        <img src="~/images/ConsultoriaAnaliseDados.jpg" alt="Análise de TI" class="img-recurso" onerror="this.src='https://placehold.co/450x300/111827/ffffff?text=Analise+Estrategica'" />
+                    </div>
+                </div>
+                <div class="col-md-6 order-1 order-md-2">
+                    <div class="recurso-texto">
+                        <span class="recurso-badge">Performance</span>
+                        <h2 class="recurso-titulo">Análise Estratégica de Dados</h2>
+                        <p class="recurso-descricao">
+                            Desenvolvemos mapeamentos de dados perfeitamente estruturados e inteligência de negócios para garantir respostas rápidas e tomadas de decisão eficientes na escolha das melhores tecnologias corporativas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="recurso-divisor" />
+
+            <div class="row recurso-bloco align-items-center my-5">
+                <div class="col-md-6">
+                    <div class="recurso-texto">
+                        <span class="recurso-badge">Segurança</span>
+                        <h2 class="recurso-titulo">Otimização de Processos de TI</h2>
+                        <p class="recurso-descricao">
+                            Implementamos rotinas inteligentes de diagnóstico tecnológico e segurança para mitigar riscos corporativos, eliminar gargalos de processamento de dados e evitar falhas operacionais involuntárias.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="tech-image-container">
+                        <img src="~/images/ConsultoriaProcessos.jpg" alt="Processos Otimizados" class="img-recurso" onerror="this.src='https://placehold.co/450x300/111827/ffffff?text=Otimizacao+de+Processos'" />
+                    </div>
+                </div>
+            </div>
+
+            <hr class="recurso-divisor" />
+
+            <div class="row recurso-bloco align-items-center mt-5">
+                <div class="col-md-6 text-center order-2 order-md-1">
+                    <div class="tech-image-container">
+                        <img src="~/images/ConsultoriaEscalabilidade.jpg" alt="Alinhamento com Negócios" class="img-recurso" onerror="this.src='https://placehold.co/450x300/111827/ffffff?text=Pronto+para+Escalar'" />
+                    </div>
+                </div>
+                <div class="col-md-6 order-1 order-md-2">
+                    <div class="recurso-texto">
+                        <span class="recurso-badge">Alinhamento</span>
+                        <h2 class="recurso-titulo">Pronto para a Escalabilidade</h2>
+                        <p class="recurso-descricao">
+                            Esqueça entraves na sua operação de tecnologia. Nossa equipe prepara sua infraestrutura corporativa e os objetivos de negócio para suportar o crescimento contínuo de acessos sem perda de estabilidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h4 class="mb-4">Pronto para transformar a gestão de tecnologia do seu negócio?</h4>
+            <button class="btn-solicitar" data-bs-toggle="modal" data-bs-target="#modalAtendimento">Fale com um Especialista</button>
+        </div>
+    </section>
+
+    <div class="modal fade modal-customizado" id="modalAtendimento" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-weight:600;">Central de Dúvidas - ConnectFlow</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="meuFormularioContato">
+                    <div class="modal-body" style="padding: 25px;">
+                        <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 20px;">
+                            Preencha os campos abaixo para enviar sua mensagem para nossa equipe de consultores. Responderemos em breve!
+                        </p>
+                        <div class="mb-3">
+                            <label class="form-label">Nome Completo</label>
+                            <input type="text" id="nomeApi" class="form-control" placeholder="Digite seu nome" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">E-mail Corporativo</label>
+                            <input type="email" id="emailApi" class="form-control" placeholder="seu-email@empresa.com" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mensagem</label>
+                            <textarea id="msgApi" class="form-control" rows="3" placeholder="Dúvida sobre REST, SOAP ou Webhooks?" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border-top: none; padding: 0 25px 25px 25px;">
+                        <button type="submit" class="btn-solicitar" style="width: 100%; padding: 14px;">Enviar Mensagem</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+            $(document).ready(function () {
+                $("#meuFormularioContato").on("submit", function (e) {
+                    e.preventDefault();
+
+                    var usuario = $("#campoNome").val();
+                
+                    alert("Obrigado pelo contato, " + usuario + "!\nSua mensagem foi enviada com sucesso para nossa Central de Dúvidas de Consultoria.");
+
+                    this.reset();
+
+                    var mElement = document.getElementById('modalAtendimento');
+                    var mInstance = bootstrap.Modal.getInstance(mElement);
+                    mInstance.hide();
+                });
+            });
+    </script>
+</body>
+</html>
+

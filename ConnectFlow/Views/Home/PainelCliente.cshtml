@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ConnectFlow.Models.ChamadoSuporte>
+
+@{
+    ViewData["Title"] = "Painel do Cliente";
+    var usuario = ViewBag.Usuario as ConnectFlow.Models.Usuario;
+}
+
+<div class="container mt-5" style="color: #fff;">
+    <h2>Bem-vindo, @usuario?.Nome!</h2>
+    <p class="text-muted">Acompanhe abaixo o status da sua solicitação de integração.</p>
+
+    <hr style="border-color: #334155;" />
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="list-group">
+            @foreach (var chamado in Model)
+            @* Use individual citations for bullet points or list items if needed, but here it's straight code/response text *@
+            {
+                <div class="card bg-dark text-white mb-3 p-3" style="border: 1px solid #334155;">
+                    <h5>Protocolo de Atendimento</h5>
+                    <p><strong>Mensagem:</strong> @chamado.Mensagem</p>
+                    <p><small class="text-muted">Data de Envio: @chamado.DataEnvio.ToString("dd/MM/yyyy HH:mm")</small></p>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">Nenhuma solicitação encontrada para o seu e-mail.</div>
+    }
+</div>

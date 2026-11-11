@@ -1,0 +1,137 @@
+﻿@model ConnectFlow.Models.Configuracao
+
+@{
+    ViewData["Title"] = "Preferências de Acessibilidade";
+}
+
+<style>
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh; 
+        justify-content: center;
+    }
+
+    body {
+        background-color: #0f172a !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .step-text {
+        color: #94a3b8 !important;
+    }
+
+    .step-text.active {
+        color: #38bdf8 !important;
+        font-weight: 700;
+    }
+
+    .custom-card {
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 16px;
+        padding: 35px;
+        width: 100%;
+        max-width: 650px;
+        margin: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .resource-box-libras {
+        border: 1px solid #e9d5ff !important;
+        background-color: #f3e8ff !important;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 18px;
+    }
+
+    .resource-box-email {
+        border: 1px solid #bae6fd !important;
+        background-color: #e0f2fe !important;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 25px;
+    }
+
+    .custom-btn-primary {
+        background: linear-gradient(135deg, #38bdf8, #2563eb);
+        color: #ffffff !important;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 700;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .custom-btn-outline {
+        background-color: transparent !important;
+        color: #475569 !important;
+        border: 2px solid #cbd5e1 !important;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+    }
+</style>
+<div class="page-wrapper">
+    <form asp-action="Sucesso" asp-controller="Home" method="get">
+        <div class="container text-center">
+            
+            <div class="d-flex justify-content-center mb-4 small">
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Dados da Empresa</div>
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Configuração</div>
+                <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Usuário</div>
+                <div class="px-3 step-text active"><span class="badge bg-primary rounded-circle">4</span> Acessibilidade</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">5</span> Revisão</div>
+            </div>
+
+            <input type="hidden" asp-for="IdCliente" />
+            <input type="hidden" name="nomeUsuario" value="@Model?.nomeUsuario" />
+            <input type="hidden" name="emailLogin" value="@Model?.emailLogin" />
+            <input type="hidden" name="senhaLogin" value="@Model?.senhaLogin" />
+            <div class="custom-card text-start">
+                <h4 style="color: #000000 !important; font-weight: 700; margin-top: 0; margin-bottom: 5px;">Preferências de Acessibilidade</h4>
+                <p style="color: #475569 !important; font-size: 14px; margin-bottom: 25px;">Configure recursos de inclusão e comunicação</p>
+
+                <div class="resource-box-libras">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white p-2 rounded me-3" style="font-size: 20px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;">🤟</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold" style="color: #4c1d95 !important;">Suporte a LIBRAS (Língua Brasileira de Sinais)</h6>
+                                <small style="color: #6b21a8 !important;">Ative este recurso para ter acesso a vídeos e intérprete virtual</small>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" asp-for="SuporteLibras" style="cursor: pointer; transform: scale(1.2);">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-box-email">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-info text-white p-2 rounded me-3" style="font-size: 20px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;">✉️</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold" style="color: #0369a1 !important;">Notificações por E-mail</h6>
+                                <small style="color: #075985 !important;">Receba alertas de sistema e atualizações importantes</small>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" asp-for="NotificacoesEmail" style="cursor: pointer; transform: scale(1.2);">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <a asp-action="CadastroUsuario" asp-controller="Home" class="custom-btn-outline w-100">Voltar</a>
+                    <button type="submit" class="custom-btn-primary w-100">Próximo</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

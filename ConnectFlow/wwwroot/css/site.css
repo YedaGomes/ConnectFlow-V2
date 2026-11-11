@@ -1,0 +1,1060 @@
+    /* RESET GLOBAL E BASE (TELA EXPANDIDA ULTRA-WIDE) */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #0f172a !important;
+        color: #f1f5f9 !important;
+        line-height: 1.6;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* CABEÇALHO (HEADER) - ALINHADO COM A EXPANSÃO DA TELA*/
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%; 
+        background-color: #0b1329 !important;
+        border-bottom: 1px solid #1e293b;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, .25);
+    }
+
+    .logo_pim {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo_pim img {
+        height: 80px;
+        width: auto;
+        max-width: 260px;
+        object-fit: contain;
+        display: block;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 35px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #f1f5f9 !important;
+        font-weight: 700;
+        font-size: 16px;
+        transition: .3s ease;
+    }
+    nav ul li a:hover {
+        color: #38bdf8 !important;}
+
+    /* SEÇÃO HERO (BLOCO DO TOPO AMPLIADO E ALINHADO COM AS SOLUÇÕES) */
+
+    .hero {
+        text-align: center;
+        padding: 140px 0; 
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(11, 19, 41, 0.95) 100%), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2070') no-repeat center center;
+        background-size: cover;
+        background-attachment: scroll;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-content {
+        background: rgba(30, 41, 59, 0.65) !important;
+        backdrop-filter: blur(12px);
+        padding: 80px 60px; 
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        max-width: 90%; 
+        width: 1500px; 
+        box-shadow: 0 25px 55px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+        font-size: 56px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: #ffffff !important;
+        letter-spacing: -1.5px;
+    }
+
+    .hero p {
+        font-size: 22px; 
+        max-width: 900px;
+        margin: 0 auto 45px auto;
+        color: #cbd5e1 !important;
+    }
+
+    .hero .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #38bdf8, #2563eb);
+        color: #ffffff !important;
+        padding: 18px 50px;
+        font-size: 18px;
+        font-weight: 800;
+        text-decoration: none;
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(37, 99, 235, .4);
+        transition: .35s ease;
+    }
+
+    .hero .btn:hover {
+        transform: translateY(-3px) scale(1.02);
+    }
+
+    /* SEÇÃO DE SERVIÇOS */
+
+    .servicos {
+        padding: 110px 0;
+        text-align: center;
+        max-width: 90%; 
+        width: 1500px;
+        margin: 0 auto;
+    }
+
+    .servicos h2 {
+        font-size: 46px;
+        font-weight: 700;
+        margin-bottom: 65px;
+        color: #ffffff !important;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    .card {
+        background: #1e293b !important;
+        padding: 40px 28px;
+        border-radius: 20px;
+        border: 1px solid #334155;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, .3);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        min-height: 480px; 
+        transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(56, 189, 248, .2);
+        border-color: #38bdf8;
+    }
+
+    .card-img-container {
+        width: 100%;
+        height: 180px;
+        background-color: #0f172a;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        overflow: hidden;
+    }
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        color: #ffffff !important;
+        margin-bottom: 14px;
+        font-weight: 700;
+    }
+
+    .card p {
+        font-size: 15px;
+        color: #94a3b8 !important;
+        line-height: 1.6;
+    }
+
+    /* SEÇÃO SOBRE */
+
+    .sobre-box {
+        padding: 90px 0;
+        text-align: center;
+        max-width: 90%;
+        width: 1500px;
+        margin: 0 auto;
+    }
+
+    .sobre-btn {
+        background: #1e293b !important;
+        color: #ffffff !important;
+        border: 1px solid #334155;
+        padding: 16px 45px;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: background-color 0.3s;
+    }
+
+    .sobre-btn:hover {
+        background: #334155 !important;
+    }
+
+    .sobre-conteudo {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: #1e293b !important;
+        border-radius: 20px;
+        width: 100%; 
+        margin: 30px auto 0 auto;
+    }
+
+    .sobre-conteudo.ativo {
+        max-height: 500px; 
+        padding: 45px; 
+        border: 1px solid #334155;
+    }
+
+    .sobre-conteudo h2 {
+        color: #ffffff !important;
+        margin-bottom: 18px;
+        font-size: 28px;
+    }
+
+    .sobre-conteudo p {
+        color: #cbd5e1 !important;
+        font-size: 16px;
+        line-height: 1.8;
+        text-align: left; 
+    }
+
+    /* RODAPÉ */
+    footer {
+        background-color: #0b111e !important;
+        padding: 30px 0;
+        text-align: center;
+        border-top: 1px solid #1e293b; 
+    }
+
+    footer p {
+        color: #64748b !important;
+        font-size: 14px;
+    }
+
+    
+    input.custom-input, .form-control {
+        color: #ffffff !important;
+        background-color: #0f172a !important;
+    }
+
+    /* SEÇÃO SOBRE NÓS E CONTATO */
+
+    .sobre-secao {
+        background-color: #0b111e !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+
+    .sobre-secao > .sobre-container {
+        padding-top: 90px !important;
+        padding-bottom: 90px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        text-align: center !important;
+    }
+
+    .sobre-container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .sobre-titulo-principal {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .sobre-texto-institucional p {
+        margin-bottom: 25px !important;
+        line-height: 1.8 !important;
+    }
+
+    .sobre-faixa-imagem {
+        background-image: url('/images/SobreFaixa.png') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        position: relative !important;
+        padding: 140px 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    .sobre-faixa-imagem::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(11, 17, 30, 0.8);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 1;
+    }
+
+    .sobre-faixa-imagem .sobre-container {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+
+    .sobre-grid-cards {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 25px;
+        margin: 0 auto;
+    }
+
+    .sobre-card {
+        position: relative !important;
+        background-color: #172237 !important;
+        border-radius: 12px !important;
+        padding: 60px 20px 50px 20px !important;
+        margin-top: 40px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+        min-height: 280px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+
+    .sobre-card:hover {
+        transform: none !important;
+        cursor: default !important;
+
+    }
+
+    .sobre-card-icone {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .sobre-card-borda-icone {
+        width: 70px !important;
+        height: 70px !important;
+        background-color: #ffffff !important;
+        border: 3px solid #2563eb !important; 
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 2rem !important;
+        position: absolute !important;
+        top: -35px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+        z-index: 10 !important;
+    }
+
+    sobre-card-titulo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    .sobre-card-descricao {
+        font-size: 0.95rem;
+        color: #cbd5e1;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .contato-home-secao {
+        background-color: #0b111e;
+        padding: 60px 0 80px 0;
+        color: #ffffff;
+        border-top: 1px solid #1e293b;
+
+    }
+
+    .contato-home-wrapper {
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+    .contato-home-wrapper h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+
+    }
+
+    .contato-home-wrapper p {
+        color: #94a3b8;
+        margin-bottom: 25px;
+        font-size: 1rem;
+
+    }
+
+    .contato-home-form {
+        background-color: #172237;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        text-align: left;
+
+    }
+
+    .contato-home-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    .contato-home-form label {
+        display: block;
+        color: #94a3b8;
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+    }
+
+    .contato-home-form .form-control {
+        background-color: #0b111e !important;
+        border: 1px solid #334155 !important;
+        color: #ffffff !important;
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        width: 100%;
+    }
+    .contato-home-form .form-control:focus {
+        border-color: #38bdf8 !important;
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2) !important;
+    }
+    
+    .btn-contato-fluxo {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: #ffffff;
+        font-weight: 600;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        width: 100%;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .contato-home-form .form-control {
+        background-color: #ffffff !important; 
+        color: #000000 !important; 
+        border: 1px solid #ccc !important; 
+    }
+
+
+    .contato-home-form .form-control::placeholder {
+        color: #6b7280 !important;
+        opacity: 1 !important;
+    }
+
+   
+    header {
+        position: relative !important;
+        z-index: 1030 !important; 
+    }
+
+    .container .card,
+    .container-fluid .card,
+    main .card,
+    .main-content .card {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #cbd5e1 !important;
+    }
+       
+    .container .card h2, .container .card h3, .container .card h6, .container .card label,
+    main .card h2, main .card h3, main .card h6, main .card label {
+        color: #000000 !important;
+    }
+
+    
+    .container.mt-4, main .container,
+    .main-content {
+        max-width: 90% !important;
+        width: 1500px !important;
+        margin: 30px auto !important; 
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+              
+    .servicos .cards .card {
+        background-color: #111827 !important; 
+        border: 1px solid #1f2937 !important;
+        border-radius: 16px !important;
+        padding: 24px !important;
+        box-shadow: none !important;
+        transition: all 0.3s ease !important; 
+    }
+
+       .servicos .cards .card:hover {
+        transform: translateY(-8px) !important; 
+        border: 1px solid rgba(56, 189, 248, 0.5) !important; 
+        box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2) !important; 
+    }
+
+    .servicos .cards .card h3 {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+    }
+
+        .servicos .cards .card p {
+        color: #9ca3af !important;
+    }
+
+    .servicos .cards .card span {
+        color: #38bdf8 !important;
+    }
+
+    body {
+        padding-top: 110px !important;
+    }
+
+    .home-page body {
+        padding-top: 240px !important;
+    }
+
+    /* PADRÃO VISUAL DE RECURSOS E SOLUÇÕES (COMPARTILHADO) */
+
+    .tech-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 450px; 
+        height: 300px; 
+        margin: 0 auto; 
+        overflow: hidden;
+        border-radius: 12px;
+        background-color: rgba(255, 255, 255, 0.03); 
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+        
+    .tech-image-container img,
+    .img-recurso {
+        width: auto !important; 
+        max-width: 85% !important; 
+        height: auto !important;
+        max-height: 85% !important; 
+        object-fit: contain !important; 
+        display: block;
+    }
+
+    .recurso-divisor {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+        margin: 40px 0;
+        opacity: 1;
+    }
+
+@media (max-width: 768px) {
+    /* 
+       SUBSTITUA ".hero-content" pelo nome da classe que você achou no "Inspecionar" 
+       se for diferente.
+    */
+    .hero-content, .container {
+        width: 90% !important; /* Diminuímos para 90% da tela para criar margem automática */
+        margin: 0 auto !important; /* Centraliza o elemento */
+        padding: 20px !important; /* Espaço interno */
+        box-sizing: border-box !important;
+    }
+
+    header {
+        height: auto !important;
+        padding: 10px 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+        header nav a,
+        header .nav-link {
+            font-size: 14px !important; /* Diminuindo a fonte do menu */
+            padding: 5px 10px !important;
+        }
+
+    /* 2. Ajuste das Cards: Empilhando em coluna */
+    /* 2. Ajuste das Cards: Grid 2x2 para o iPad/Mobile */
+    /* 2. Ajuste Genérico: Mantém o resto do site normal (em coluna) */
+    .cards {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    .card {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+        min-height: auto !important;
+    }
+
+    /* 3. Ajuste EXCLUSIVO: Deixa só o "Nossas Soluções" em 2x2 para o iPad */
+    #servicos .cards {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+    }
+
+    #servicos .card {
+        width: 45% !important; /* Força os dois cards por linha */
+    }
+
+    /* 4. Títulos menores para não quebrar no mobile */
+    h1 {
+        font-size: 28px !important;
+    }
+
+    h2 {
+        font-size: 24px !important;
+    }
+
+
+    /* 6. Imagens dentro dos cards */
+    .card-img-container {
+        height: auto !important;
+    }
+
+    .card-img {
+        height: auto !important;
+        max-height: 200px !important;
+    }
+}
+
+    /* --- CORREÇÃO DEFINITIVA PARA SOBRE-CARDS NO MOBILE --- */
+    @media (max-width: 768px) {
+
+        /* 1. Ajuste na faixa de imagem para não ocupar tanto espaço vertical */
+        .sobre-faixa-imagem {
+            padding: 60px 0 !important; /* Reduzi de 140px para 60px */
+        }
+
+        /* 2. O segredo: permitir quebrar a linha e empilhar */
+        .sobre-grid-cards {
+            flex-wrap: wrap !important; /* Permite que os cards pulem linha */
+            flex-direction: column !important; /* Empilha um embaixo do outro */
+            gap: 50px !important; /* Espaçamento entre os cards empilhados */
+            padding: 0 15px !important;
+        }
+
+        /* 3. Ajuste no card individual */
+        .sobre-card {
+            margin-top: 30px !important; /* Espaço para o ícone flutuante */
+            margin-bottom: 20px !important;
+            width: 100% !important; /* Garante largura total */
+            min-height: auto !important; /* Deixa o card crescer conforme o texto */
+        }
+    }
+/* Ajuste para o conteúdo não ficar escondido atrás do header no celular */
+@media (max-width: 768px) {
+    .tela-inteira {
+        width: 92% !important; /* Define que o conteúdo ocupará 92% da largura */
+        margin: 0 auto !important; /* Centraliza o container na tela */
+        padding-top: 120px !important; /* Mantém o respiro do topo */
+        min-height: auto !important; /* Ajuste de altura */
+        padding-bottom: 30px !important; /* Opcional: respiro no final da página */
+    }
+}
+@media (max-width: 768px) {
+    /* 1. Ajuste do Card principal: menos padding, mais espaço lateral */
+    .custom-card {
+        padding: 20px !important; /* Reduz de 35px para 20px */
+        width: 90% !important; /* Evita que ele encoste nas bordas da tela */
+    }
+
+    /* 2. Ajuste das Etapas (Steps) no topo */
+    /* Ajuste o nome '.steps-container' se for diferente no seu HTML */
+    .steps-container {
+        flex-direction: row !important; /* Mantém na linha */
+        flex-wrap: wrap !important; /* Permite quebrar linha se precisar */
+        gap: 5px !important; /* Diminui o espaço entre os passos */
+    }
+
+    .step-text {
+        font-size: 11px !important; /* Texto menor para não quebrar */
+    }
+
+    /* 3. Ajuste dos Boxes de Recursos (Libras e Email) */
+    .resource-box-libras, .resource-box-email {
+        padding: 12px !important; /* Diminui o espaço interno */
+        margin-bottom: 15px !important;
+    }
+
+        /* Reduz o tamanho das fontes dentro dos boxes */
+        .resource-box-libras h4, .resource-box-email h4 {
+            font-size: 14px !important; /* Títulos menores */
+            margin-bottom: 5px !important;
+        }
+
+        .resource-box-libras p, .resource-box-email p {
+            font-size: 12px !important; /* Texto da descrição menor */
+            line-height: 1.4 !important;
+        }
+}
+
+/* Container das etapas */
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.step-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cbd5e1; /* Cor padrão (cinza) */
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+/* Status: Concluído (Verde) */
+.step-item.done .step-icon {
+    background-color: #22c55e;
+}
+
+.step-item.done .step-label {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* Status: Ativo (Azul) */
+.step-item.active .step-icon {
+    background-color: #38bdf8;
+    box-shadow: 0 0 0 4px #e0f2fe;
+}
+
+.step-item.active .step-label {
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+/* Label texto */
+.step-label {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+    .steps-container {
+        gap: 5px;
+    }
+
+    .step-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .step-label {
+        font-size: 10px;
+        text-align: center;
+    }
+    /* Cor padrão das etapas (quando NÃO estão ativas) */
+    .step-text {
+        color: #94a3b8 !important;
+        transition: all 0.3s ease; /* Uma animaçãozinha suave */
+    }
+
+        /* O código que você quer manter (quando a etapa ESTÁ ATIVA) */
+        .step-text.active {
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+}
+
+/* --- REGRA EXCLUSIVA PARA NOSSAS SOLUÇÕES: 2x2 NO IPAD PRO E TABLETS --- */
+@media (max-width: 1024px) {
+    #servicos .cards {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    #servicos .card {
+        width: 45% !important;
+        flex: 0 0 45% !important; /* Trava o card para ele não se espremer */
+        margin-bottom: 20px !important;
+    }
+}
+/* --- ESTILO E RESPONSIVIDADE DO BOTÃO ACOMPANHAR SOLICITAÇÃO --- */
+.btn-acompanhar {
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+    .btn-acompanhar:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+@media (max-width: 768px) {
+    .navbar-nav, .navbar-nav li {
+        text-align: center !important;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .nav-link.btn-acompanhar, .btn-acompanhar {
+        display: inline-block !important;
+        width: 90% !important;
+        max-width: 280px !important;
+        margin: 4px auto !important;
+        white-space: normal !important;
+    }
+}
+/* --- AJUSTE GLOBAL E ESPAÇAMENTO DO CABEÇALHO --- */
+header, .navbar, .header-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    padding: 10px 20px !important;
+}
+
+    header nav ul, .navbar-nav {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important; /* Espaço uniforme entre cada link do menu */
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    header nav a, .nav-link {
+        white-space: nowrap !important; /* Impede que o texto de links como "Solicitar Integração" quebre ao meio */
+        font-size: 0.95rem !important;
+    }
+
+/* --- CORREÇÃO DEFINITIVA PARA MOBILE (GALAXY A52 E SIMILARES) --- */
+@media (max-width: 768px) {
+
+    /* 1. CABEÇALHO ORGANIZADO E CENTRALIZADO */
+    header, .navbar {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 12px 10px !important;
+        height: auto !important;
+    }
+
+        header nav ul, .navbar-nav {
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 8px !important;
+            margin-top: 12px !important;
+            padding: 0 !important;
+        }
+
+        header nav a, .nav-link {
+            font-size: 14px !important;
+            padding: 6px 12px !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+        }
+
+    /* Botão Acompanhar Solicitação ajustado no mobile */
+    .btn-acompanhar {
+        display: inline-block !important;
+        width: auto !important;
+        max-width: none !important;
+        padding: 8px 18px !important;
+        font-size: 14px !important;
+        white-space: nowrap !important;
+        margin: 8px auto !important;
+        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+        border-radius: 6px !important;
+        text-align: center !important;
+    }
+
+    /* 2. CORREÇÃO DOS CARDS DE SOLUÇÕES (100% da largura sem espremer) */
+    #servicos .cards, .cards {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+        gap: 20px !important;
+    }
+
+    #servicos .card, .card {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        margin: 0 auto 15px auto !important;
+        box-sizing: border-box !important;
+    }
+}
+/* --- AJUSTE UNIFICADO E SEGURO PARA CABEÇALHO E RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+    header, .navbar {
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 15px !important;
+    }
+
+        header nav ul, .navbar-nav {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            margin: 0 !important;
+        }
+
+        header nav a, .nav-link {
+            font-size: 13px !important;
+            padding: 4px 6px !important;
+            white-space: nowrap !important;
+        }
+
+    .btn-acompanhar {
+        display: inline-block !important;
+        padding: 6px 12px !important;
+        font-size: 13px !important;
+        white-space: nowrap !important;
+    }
+}
+/* --- CORREÇÃO IMEDIATA DO CABEÇALHO GIGANTE NO MOBILE --- */
+/* --- 1. TELEMÓVEL (Até 768px) --- */
+/* --- CORREÇÃO DEFINITIVA PARA O CABEÇALHO NO TELEMÓVEL --- */
+/* --- CORREÇÃO FINAL E EQUILIBRADA PARA MOBILE --- */
+@media (max-width: 768px) {
+    header, .navbar {
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 8px 10px 12px 10px !important;
+        background-color: #0b132b !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+        header .navbar-brand, .logo_pim {
+            margin-bottom: 6px !important;
+            text-align: center !important;
+        }
+
+        header nav ul, .navbar-nav {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        header nav a, .nav-link {
+            font-size: 11px !important;
+            padding: 3px 6px !important;
+            white-space: nowrap !important;
+        }
+
+    .btn-acompanhar {
+        display: inline-block !important;
+        padding: 4px 10px !important;
+        font-size: 11px !important;
+        white-space: nowrap !important;
+        margin: 4px auto !important;
+    }
+
+    /* Empurra suavemente as etapas e o conteúdo para baixo do cabeçalho sem criar grandes vazios */
+    .steps-container, .tela-inteira, .container, main {
+        margin-top: 15px !important;
+    }
+}
+/* --- 2. TABLET (769px a 1024px) - 100% ISOLADO --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header, .navbar {
+        position: relative !important;
+        height: auto !important;
+        min-height: 90px !important;
+        padding: 15px 20px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        background-color: #0b132b !important;
+    }
+
+        header nav ul, .navbar-nav {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        header nav a, .nav-link {
+            font-size: 12.5px !important;
+            padding: 4px 6px !important;
+            white-space: nowrap !important;
+        }
+
+    .btn-acompanhar {
+        display: inline-block !important;
+        padding: 6px 12px !important;
+        font-size: 12.5px !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+    }
+}

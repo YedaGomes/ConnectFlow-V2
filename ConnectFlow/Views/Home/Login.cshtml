@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Login - Acompanhar Solicitação";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh; font-family: 'Montserrat', sans-serif;">
+    <div class="card p-5 shadow-lg" style="width: 100%; max-width: 450px; border-radius: 12px; background-color: #ffffff; border: 1px solid #1f2937;">
+        <h3 class="text-center mb-4" style="color: #0b0f19; font-weight: 700;">Área do Cliente</h3>
+
+        <!-- 1. Corrigido para apontar para o UsuariosController/Login -->
+        <form asp-controller="Usuarios" asp-action="Login" method="post">
+
+            <div class="mb-3">
+                <label class="form-label" style="font-weight: 600; color: #0b0f19;">E-mail de Acesso</label>
+                <!-- 2. Alterado para 'Email' com E maiúsculo para casar com o C# -->
+                <input type="email" name="Email" class="form-control" required placeholder="exemplo@empresa.com" style="background-color: #ffffff !important; color: #0b0f19 !important; border: 1px solid #d1d5db;">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label" style="font-weight: 600; color: #0b0f19;">Senha</label>
+                <!-- 3. Alterado de SenhaHash para apenas 'Senha' para simplificar -->
+                <input type="password" name="Senha" class="form-control" required placeholder="••••••••" style="background-color: #ffffff !important; color: #0b0f19 !important; border: 1px solid #d1d5db;">
+            </div>
+
+            <button type="submit" class="btn w-100 mb-3" style="background-color: #0b0f19; color: #ffffff; font-weight: 600; padding: 10px;">Entrar</button>
+
+            <!-- Exibe erros de login se houver -->
+            @if (ViewBag.Erro != null)
+            {
+                <div class="text-danger text-center mt-2" style="font-size: 0.85rem;">
+                    @ViewBag.Erro
+                </div>
+            }
+        </form>
+
+        <div class="text-center mt-4 pt-4" style="border-top: 1px solid #e5e7eb;">
+            <p class="mb-1" style="color: #6b7280; font-size: 0.95rem;">Ainda não tem conta?</p>
+            <a href="@Url.Action("Index", "Home")" style="color: #60a5fa; font-weight: 600; text-decoration: none;">Solicite sua integração para começar</a>
+        </div>
+    </div>
+</div>  

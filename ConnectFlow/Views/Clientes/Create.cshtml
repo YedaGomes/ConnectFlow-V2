@@ -1,0 +1,194 @@
+﻿@model ConnectFlow.Models.Cliente
+
+@{
+    ViewData["Title"] = "Conectividade de Dados";
+}
+
+<style>
+    body {
+        background-color: #0f172a !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* O wrapper que mantém etapas e card unidos */
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh;
+        justify-content: center;
+    }
+
+    .step-text {
+        color: #94a3b8 !important;
+    }
+
+        .step-text.active {
+            color: #38bdf8 !important;
+            font-weight: 700;
+        }
+
+    .custom-card {
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 16px;
+        padding: 35px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        margin: 0 auto; /* Centraliza o card */
+        text-align: left; /* Impede que os labels do form fiquem centralizados */
+    }
+
+    .form-label {
+        color: #000000 !important;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        font-size: 14px;
+    }
+
+    input.form-control.custom-input,
+    .custom-input {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 8px;
+        padding: 12px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 15px;
+        transition: all 0.2s ease-in-out;
+    }
+
+        input.form-control.custom-input:hover,
+        .custom-input:hover {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border-color: #94a3b8 !important;
+        }
+
+        input.form-control.custom-input:focus,
+        .custom-input:focus {
+            outline: none !important;
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+        }
+
+        input.form-control.custom-input::placeholder,
+        .custom-input::placeholder {
+            color: #64748b !important;
+            opacity: 1 !important;
+        }
+
+    .custom-btn {
+        background: linear-gradient(135deg, #38bdf8, #2563eb);
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 14px;
+        font-weight: 700;
+        font-size: 16px;
+        width: 100%;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        margin-top: 10px;
+    }
+
+        .custom-btn:hover {
+            opacity: 0.9;
+        }
+</style>
+
+<div class="page-wrapper">
+    <div class="container text-center">
+
+       <div class="d-flex justify-content-center mb-4 small">
+                <div class="px-3 step-text active"><span class="badge bg-primary rounded-circle">1</span> Dados da Empresa</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">2</span> Configuração</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">3</span> Usuário</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">4</span> Acessibilidade</div>
+                <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">5</span> Revisão</div>
+            </div>
+        <div class="custom-card">
+            <h2 style="color: #000000 !important; font-weight: 700; text-align: center; margin-top: 0; margin-bottom: 10px;">Dados da Empresa</h2>
+            <h6 style="color: #475569 !important; text-align: center; font-weight: 400; margin-bottom: 25px;">Preencha as informações da sua empresa</h6>
+
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div style="margin-bottom: 18px;">
+                    <label asp-for="Cnpj" class="form-label">CNPJ *</label>
+                    <input asp-for="Cnpj" class="form-control custom-input" placeholder="00.000.000/0000-00" />
+                    <span asp-validation-for="Cnpj" class="text-danger" style="font-size: 13px;"></span>
+                </div>
+
+                <div style="margin-bottom: 18px;">
+                    <label asp-for="RazaoSocial" class="form-label">Razão Social *</label>
+                    <input asp-for="RazaoSocial" class="form-control custom-input" placeholder="Ex: Tech Solutions LTDA" />
+                    <span asp-validation-for="RazaoSocial" class="text-danger" style="font-size: 13px;"></span>
+                </div>
+
+                <div style="margin-bottom: 18px;">
+                    <label asp-for="NomeFantasia" class="form-label">Nome Fantasia *</label>
+                    <input asp-for="NomeFantasia" class="form-control custom-input" placeholder="Ex: Tech Solutions" />
+                    <span asp-validation-for="NomeFantasia" class="text-danger" style="font-size: 13px;"></span>
+                </div>
+
+                <div style="margin-bottom: 18px;">
+                    <label asp-for="ResponsavelTecnico" class="form-label">Responsável Técnico *</label>
+                    <input asp-for="ResponsavelTecnico" class="form-control custom-input" placeholder="Nome do responsável" />
+                    <span asp-validation-for="ResponsavelTecnico" class="text-danger" style="font-size: 13px;"></span>
+                </div>
+
+                <div style="margin-bottom: 18px;">
+                    <label asp-for="EmailCorporativo" class="form-label">E-mail Corporativo *</label>
+                    <input asp-for="EmailCorporativo" class="form-control custom-input" placeholder="contato@empresa.com.br" />
+                    <span asp-validation-for="EmailCorporativo" class="text-danger" style="font-size: 13px;"></span>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label asp-for="Telefone" class="form-label">Telefone *</label>
+                    <input asp-for="Telefone" class="form-control custom-input" placeholder="(11) 99999-9999" />
+                    <span asp-validation-for="Telefone" class="text-danger" style="font-size: 13px;"></span>
+                </div>
+
+                <div>
+                    <button type="submit" class="custom-btn">Próximo</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <!-- Importando o plugin de Máscaras para impedir letras em campos numéricos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Aplica a máscara de CNPJ automaticamente
+            $('#Cnpj').mask('00.000.000/0000-00', { reverse: true });
+
+            // Aplica a máscara de telefone (aceitando fixo com 8 ou celular com 9 dígitos)
+            var SPMaskBehavior = function (val) {
+                return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+            },
+            spOptions = {
+                onKeyPress: function(val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+            $('#Telefone').mask(SPMaskBehavior, spOptions);
+        });
+    </script>
+}

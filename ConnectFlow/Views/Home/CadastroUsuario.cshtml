@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Usuário de Acesso - Etapa 3";
+}
+
+<style>
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 85vh; 
+        justify-content: center;
+    }
+
+    body {
+        background-color: #0f172a !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .step-text {
+        color: #94a3b8 !important;
+    }
+
+    .step-text.active {
+        color: #38bdf8 !important;
+        font-weight: 700;
+    }
+
+    .custom-card {
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 16px;
+        padding: 35px;
+        width: 100%;
+        max-width: 650px;
+        margin: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .custom-btn-primary {
+        background: linear-gradient(135deg, #38bdf8, #2563eb);
+        color: #ffffff !important;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 700;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .custom-btn-outline {
+        background-color: transparent !important;
+        color: #475569 !important;
+        border: 2px solid #cbd5e1 !important;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="container text-center">
+        
+        <!-- Barra de Progresso -->
+        <div class="d-flex justify-content-center mb-4 small">
+            <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Dados da Empresa</div>
+            <div class="px-3 step-text"><span class="badge bg-success rounded-circle">✓</span> Configuração</div>
+            <div class="px-3 step-text active"><span class="badge bg-primary rounded-circle">3</span> Usuário</div>
+            <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">4</span> Acessibilidade</div>
+            <div class="px-3 step-text"><span class="badge bg-secondary rounded-circle">5</span> Revisão</div>
+        </div>
+
+        <!-- Formulário e Card Branco -->
+        <form method="post" action="/Home/Acessibilidade">
+            <div class="custom-card text-start">
+                <h3 class="fw-bold text-center mb-1" style="color: #000000;">Crie seu Usuário de Acesso</h3>
+                <p class="text-center text-muted small mb-4">Estes dados serão usados para você acompanhar o status da sua integração na Área do Cliente.</p>
+                <div class="mb-3">
+                    <label class="form-label fw-bold small text-dark">Nome Completo *</label>
+                    <input type="text" name="Nome" class="form-control" required placeholder="Seu nome completo" style="background-color: #ffffff !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important;" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold small text-dark">E-mail para Login *</label>
+                    <input type="email" name="Email" class="form-control" required placeholder="email@empresa.com" style="background-color: #ffffff !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important;" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold small text-dark">Crie uma Senha *</label>
+                    <input type="password" name="SenhaHash" class="form-control" required placeholder="••••••••" style="background-color: #ffffff !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important;" />
+                </div>
+
+                <div class="d-flex gap-3 mt-4">
+                    <a asp-action="Configuracao" asp-controller="Clientes" class="custom-btn-outline w-100">Voltar</a>
+                    <button type="submit" class="custom-btn-primary w-100">Próximo</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
