@@ -1,3 +1,6 @@
+using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 using ConnectFlow.Data;
 using ConnectFlow.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -210,16 +213,7 @@ public class UsuariosController : Controller
         return RedirectToAction("AcompanharSolicitacao");
     }
 
-    // GET: USUARIOS/AcompanharSolicitacao (ROTA PROTEGIDA)
-    [Authorize]
-    [HttpGet]
-    public IActionResult AcompanharSolicitacao()
-    {
-        return View();
-    }
-
-    // GET: USUARIOS/Sair
-    public async Task<IActionResult> Sair()
+        public async Task<IActionResult> Sair()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index", "Home");
@@ -237,5 +231,121 @@ public class UsuariosController : Controller
             // Converte para uma string hexadecimal limpa em minúsculas
             return string.Concat(hashBytes.Select(b => b.ToString("x2")));
         }
+    }
+    [HttpPost]
+    public async Task<IActionResult> SalvarUsuarioPasso3(string Nome, string Email, string SenhaHash, int IdCliente)
+    {
+        // 1. NOVO: Trava de E-mail Duplicado
+        var emailExiste = await _context.Usuarios.AnyAsync(u => u.Email == Email);
+        if (emailExiste)
+        {
+            TempData["ErroSenha"] = "Este e-mail já está em uso. Por favor, tente fazer login ou use outro.";
+            return RedirectToAction("CadastroUsuario", "Home", new { id = IdCliente });
+        }
+
+        // 2. Validação da Regra de Negócio da Senha
+        var contemEspecial = System.Text.RegularExpressions.Regex.IsMatch(SenhaHash, @"[!@#$%^&*(),.?:{}|<>]");
+        if (SenhaHash.Length < 6 || !contemEspecial)
+        {
+            TempData["ErroSenha"] = "A senha não atende aos requisitos de segurança.";
+            return RedirectToAction("CadastroUsuario", "Home", new { id = IdCliente });
+        }
+
+        // 3. Criptografa a senha com a nossa função segura
+        string senhaCripto = GerarHash(SenhaHash);
+
+        // 4. Salva o usuário no banco de dados de verdade
+        var usuario = new Usuario
+        {
+            Nome = Nome,
+            Email = Email,
+            SenhaHash = senhaCripto,
+            Perfil = "Cliente",
+            DataCriacao = DateTime.Now
+        };
+        _context.Usuarios.Add(usuario);
+        await _context.SaveChangesAsync();
+
+        // 5. Redireciona para a Etapa 4 (Acessibilidade)
+        return RedirectToAction("Acessibilidade", "Clientes", new { id = IdCliente });
+    }
+
+
+
+    // =========================================================
+    // ACOMPANHAMENTO DE SOLICITAÇÕES
+    // =========================================================
+
+    // GET: USUARIOS/AcompanharSolicitacao
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> AcompanharSolicitacao()
+    {
+        var identificador = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!int.TryParse(identificador, out int idUsuario))
+        {
+            return Unauthorized();
+        }
+
+        // Busca os clientes vinculados às integrações do usuário
+        var clientesIds = await _context.Configuracoes
+            .AsNoTracking()
+            .Where(c => c.IdUsuario == idUsuario)
+            .Select(c => c.IdCliente)
+            .Distinct()
+            .ToListAsync();
+
+        // Busca os chamados desses clientes
+        var chamados = await _context.ChamadosSuporte
+            .AsNoTracking()
+            .Where(c => clientesIds.Contains(c.IdCliente))
+            .OrderByDescending(c => c.DataEnvio)
+            .ToListAsync();
+
+        ViewBag.Chamados = chamados;
+
+        return View();
+    }
+
+    // POST: Atualizar status de um chamado
+    [Authorize]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AtualizarStatusChamado(int idChamado, string status)
+    {
+        var statusPermitidos = new[] { "Aberto", "Em andamento", "Concluído" };
+
+        if (!statusPermitidos.Contains(status))
+        {
+            return BadRequest("Status inválido.");
+        }
+
+        var identificador = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!int.TryParse(identificador, out int idUsuario))
+        {
+            return Unauthorized();
+        }
+
+        var clientesIds = await _context.Configuracoes
+            .Where(c => c.IdUsuario == idUsuario)
+            .Select(c => c.IdCliente)
+            .Distinct()
+            .ToListAsync();
+
+        var chamado = await _context.ChamadosSuporte
+            .FirstOrDefaultAsync(c => c.IdChamado == idChamado && clientesIds.Contains(c.IdCliente));
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        chamado.Status = status;
+        await _context.SaveChangesAsync();
+
+        TempData["MensagemSucesso"] = "Status do chamado atualizado com sucesso.";
+        return RedirectToAction(nameof(AcompanharSolicitacao));
     }
 }

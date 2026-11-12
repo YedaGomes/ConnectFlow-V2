@@ -47,31 +47,34 @@ namespace ConnectFlow.Controllers
             return View();
         }
 
+        // POST: Clientes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCliente,Cnpj,RazaoSocial,NomeFantasia,ResponsavelTecnico,EmailCorporativo,Telefone")] Cliente cliente)
         {
+            // 1. Trava: Verifica se o CNPJ já existe no banco
+            bool cnpjExiste = await _context.Clientes.AnyAsync(c => c.Cnpj == cliente.Cnpj);
+            if (cnpjExiste)
+            {
+                ModelState.AddModelError("Cnpj", "Este CNPJ já está cadastrado no sistema.");
+            }
+
+            // 2. Trava: Verifica se o E-mail Corporativo já existe no banco
+            bool emailExiste = await _context.Clientes.AnyAsync(c => c.EmailCorporativo == cliente.EmailCorporativo);
+            if (emailExiste)
+            {
+                ModelState.AddModelError("EmailCorporativo", "Este e-mail corporativo já está em uso.");
+            }
+
+            // 3. Só prossegue se não houver duplicidade ou campos vazios
             if (ModelState.IsValid)
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Configuracao", new { id = cliente.IdCliente });
             }
-            return View(cliente);
-        }
 
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
+            // Se der erro, devolve a tela preenchida com o aviso em vermelho
             return View(cliente);
         }
 
@@ -147,34 +150,61 @@ namespace ConnectFlow.Controllers
             var config = new ConnectFlow.Models.Configuracao { IdCliente = id };
             return View(config);
         }
+        // ETAPA 2: Salva a Configuração no banco com validação
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Configuracao(int id, string volumeDados)
+        public async Task<IActionResult> Configuracao(int id, string prioridade, string bancoOrigem)
         {
+            // 1. TRAVA: Se não selecionou a prioridade ou o banco, bloqueia e avisa
+            if (string.IsNullOrEmpty(prioridade) || string.IsNullOrEmpty(bancoOrigem))
+            {
+                TempData["ErroConfig"] = "Você precisa selecionar uma prioridade e o banco de dados de origem.";
+                var configErro = new ConnectFlow.Models.Configuracao { IdCliente = id };
+                return View(configErro);
+            }
 
-            return RedirectToAction("Acessibilidade", new { id = id });
+            // 2. Cria a configuração no banco de dados vinculada ao Cliente (id)
+            var config = new ConnectFlow.Models.Configuracao
+            {
+                IdCliente = id,
+                VolumeDados = prioridade, // Armazena a prioridade escolhida
+                SistemaOrigem = bancoOrigem, // Armazena o banco escolhido
+                SistemaDestino = "Pendente"
+            };
+
+            _context.Configuracoes.Add(config);
+            await _context.SaveChangesAsync();
+
+            // 3. Redireciona para a Etapa 3 (Usuário), passando o ID do Cliente
+            return RedirectToAction("CadastroUsuario", "Home", new { id = id });
         }
 
         [HttpGet]
         public IActionResult Acessibilidade(int id)
         {
             var config = new ConnectFlow.Models.Configuracao { IdCliente = id };
-
             return View("Acessibilidade", config);
         }
-        // Método que PROCESSA o botão Próximo (POST)
+
+        // ETAPA 3: Salva a Acessibilidade na mesma configuração criada na Etapa 2
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Acessibilidade(int id, bool suporteLibras, bool notificacoesEmail)
         {
+            // 1. Busca no banco a configuração que criamos na etapa anterior
+            var config = await _context.Configuracoes.FirstOrDefaultAsync(c => c.IdCliente == id);
+
+            if (config != null)
+            {
+                // 2. Atualiza os dados com as checkboxes marcadas na tela
+                config.SuporteLibras = suporteLibras;
+                config.NotificacoesEmail = notificacoesEmail;
+
+                _context.Update(config);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToAction("Sucesso");
-        }
-
-        // Método para abrir a tela de sucesso:
-        public IActionResult Sucesso()
-        {
-            return View();
         }
 
     }

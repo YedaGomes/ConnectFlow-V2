@@ -1,5 +1,334 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ConnectFlow.Models
+@using System.Collections.Generic
+
 @{
+    ViewData["Title"] = "Acompanhamento";
+
+    var chamados = ViewBag.Chamados as List<ConnectFlow.Models.ChamadoSuporte>
+        ?? new List<ConnectFlow.Models.ChamadoSuporte>();
+
+    var totalAbertos = chamados.Count(c => c.Status == "Aberto");
+}
+
+<div class="container mt-4 mb-5">
+
+    <div class="mb-4">
+        <h1 class="fw-bold text-white">Acompanhamento</h1>
+        <p class="text-white">
+            Acompanhe suas integrações e solicitações de suporte.
+        </p>
+    </div>
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    <!-- RESUMO DAS INTEGRAÇÕES -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-3">
+                <small class="text-muted">Total de integrações</small>
+                <h2 id="totalIntegracoes">0</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-3">
+                <small class="text-muted">Integrações online</small>
+                <h2 class="text-success" id="integracoesOnline">0</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-3">
+                <small class="text-muted">Chamados abertos</small>
+                <h2 class="text-primary">@totalAbertos</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- INTEGRAÇÕES -->
+    <div class="card border-0 shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-3">Integrações</h4>
+
+            <p id="mensagemIntegracoes" class="text-muted">
+                Carregando integrações...
+            </p>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Sistema de origem</th>
+                            <th>Sistema de destino</th>
+                            <th>Status</th>
+                            <th>Última atualização</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaIntegracoes">
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SOLICITAÇÕES DE SUPORTE -->
+    <div class="card border-0 shadow-sm">
+
+        <div class="card-body">
+
+            <h4 class="fw-bold mb-3">
+                Solicitações de suporte
+            </h4>
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead>
+                        <tr>
+                            <th>Chamado</th>
+                            <th>Solicitante</th>
+                            <th>Mensagem</th>
+                            <th>Data de envio</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (!chamados.Any())
+                        {
+                            <tr>
+                                <td colspan="6"
+                                    class="text-center text-muted">
+                                    Nenhum chamado recebido.
+                                </td>
+                            </tr>
+                        }
+
+                        @foreach (var chamado in chamados)
+                        {
+                            <tr>
+
+                                <td>#@chamado.IdChamado</td>
+
+                                <td>
+                                    <strong>
+                                        @chamado.NomeCompleto
+                                    </strong>
+                                    <br />
+                                    <small class="text-muted">
+                                        @chamado.EmailCorporativo
+                                    </small>
+                                </td>
+
+                                <td>@chamado.Mensagem</td>
+
+                                <td>
+                                    @chamado.DataEnvio.ToString(
+                                        "dd/MM/yyyy HH:mm")
+                                </td>
+
+                                <td>
+                                    @if (chamado.Status == "Concluído")
+                                    {
+                                        <span class="badge bg-success">
+                                            Concluído
+                                        </span>
+                                    }
+                                    else if (chamado.Status == "Em andamento")
+                                    {
+                                        <span class="badge bg-primary">
+                                            Em andamento
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning text-dark">
+                                            Aberto
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>
+                                    <form asp-controller="Usuarios"
+                                          asp-action="AtualizarStatusChamado"
+                                          method="post">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="hidden"
+                                               name="idChamado"
+                                               value="@chamado.IdChamado" />
+
+                                        <select name="status"
+                                                class="form-select form-select-sm mb-2">
+
+                                            @foreach (var status in new[]
+                                            {
+                                                "Aberto",
+                                                "Em andamento",
+                                                "Concluído"
+                                            })
+                                            {
+                                                if (chamado.Status == status)
+                                                {
+                                                    <option value="@status" selected>
+                                                        @status
+                                                    </option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@status">
+                                                        @status
+                                                    </option>
+                                                }
+                                            }
+
+                                        </select>
+
+                                        <button type="submit"
+                                                class="btn btn-primary btn-sm">
+                                            Atualizar
+                                        </button>
+
+                                    </form>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <script>
+
+        function escapar(valor) {
+            return String(valor ?? "").replace(/[&<>"']/g, caractere => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            })[caractere]);
+        }
+
+        function formatarData(data) {
+
+            if (!data) return "Sem atualização";
+
+            const dataObj = new Date(data);
+
+            if (isNaN(dataObj.getTime())) {
+                return "Data indisponível";
+            }
+
+            return dataObj.toLocaleString("pt-BR");
+        }
+
+        async function carregarIntegracoes() {
+
+            const tabela = document.getElementById("listaIntegracoes");
+            const mensagem = document.getElementById("mensagemIntegracoes");
+
+            try {
+
+                const resposta = await fetch("/api/dashboard2/integracoes", {
+                    credentials: "same-origin"
+                });
+
+                if (!resposta.ok) {
+                    throw new Error("Erro ao consultar a API.");
+                }
+
+                const dados = await resposta.json();
+
+                document.getElementById("totalIntegracoes").textContent =
+                    dados.totalIntegracoes;
+
+                document.getElementById("integracoesOnline").textContent =
+                    dados.integracoesOnline;
+
+                tabela.innerHTML = "";
+
+                if (!dados.integracoes || dados.integracoes.length === 0) {
+
+                    mensagem.textContent =
+                        "Nenhuma integração vinculada ao usuário.";
+
+                    return;
+                }
+
+                mensagem.textContent =
+                    "Integrações carregadas pela API.";
+
+                dados.integracoes.forEach(item => {
+
+                    let classe = "bg-secondary";
+
+                    if (item.online) {
+                        classe = "bg-success";
+                    }
+                    else if (item.offline) {
+                        classe = "bg-danger";
+                    }
+
+                    const linha = `
+                        <tr>
+                            <td>${escapar(item.cliente)}</td>
+                            <td>${escapar(item.sistemaOrigem)}</td>
+                            <td>${escapar(item.sistemaDestino)}</td>
+                            <td>
+                                <span class="badge ${classe}">
+                                    ${escapar(item.status)}
+                                </span>
+                            </td>
+                            <td>
+                                ${escapar(formatarData(item.ultimaAtualizacao))}
+                            </td>
+                        </tr>
+                    `;
+
+                    tabela.insertAdjacentHTML("beforeend", linha);
+
+                });
+
+            }
+            catch (erro) {
+
+                console.error(erro);
+
+                mensagem.textContent =
+                    "Não foi possível carregar as integrações.";
+
+            }
+        }
+
+        carregarIntegracoes();
+
+    </script>
+
 }

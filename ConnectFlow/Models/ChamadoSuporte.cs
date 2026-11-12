@@ -1,17 +1,17 @@
-﻿namespace ConnectFlow.Models
-{
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace ConnectFlow.Models
+{
     [Table("ChamadoSuporte")]
     public class ChamadoSuporte
     {
         [Key]
         public int IdChamado { get; set; }
 
-        // Chave estrangeira ligando ao Cliente
         public int IdCliente { get; set; }
+
         [ForeignKey("IdCliente")]
         public virtual Cliente Cliente { get; set; }
 
@@ -27,5 +27,9 @@
         public string Mensagem { get; set; }
 
         public DateTime DataEnvio { get; set; } = DateTime.Now;
+
+        [Required]
+        [MaxLength(20)]
+        public string Status { get; set; } = "Aberto";
     }
 }
